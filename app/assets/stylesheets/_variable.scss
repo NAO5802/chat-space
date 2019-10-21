@@ -1,0 +1,15 @@
+$white: #ffffff;
+$skyblue: #38AEF0;
+$lightgray: #999999;
+$darkgray: #434A54;
+
+@mixin btn($textcolor) {
+    padding:0 20px;
+    &--link{
+      border: none;
+      padding: 0;
+      margin: 0;
+      text-decoration: none;
+      color: $textcolor;
+    }
+}
