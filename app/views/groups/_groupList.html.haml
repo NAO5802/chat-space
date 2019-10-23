@@ -1,0 +1,7 @@
+.groupList
+  -current_user.groups.each do |group|
+    = link_to "#", class: "editLink"  do
+      .groupList__groupName
+        =group.name
+      .groupList__message
+        %p まだメッセージがありません
