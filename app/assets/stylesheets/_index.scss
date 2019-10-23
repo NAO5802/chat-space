@@ -2,17 +2,6 @@
   box-sizing: border-box; 
 }
 
-.header {
-  height: 30px;
-  width: 100vw;
-  background-color: $skyblue;
-  &__message{
-    color: $white;
-    text-align: center;
-    line-height: 30px;
-  }
-}
-
 .leftContents {
   width: 300px;
   color: $white;
@@ -37,7 +26,7 @@
 }
 
 .groupList{
-  height: calc(100vh - 130px);
+  height: calc(100vh - 100px);
   background-color: #2f3e51;
   padding: 20px 20px 0;
   overflow: scroll;
@@ -87,7 +76,7 @@
 }
 
 .chatField{
-  height: calc(100vh - 220px);
+  height: calc(100vh - 190px);
   padding: 46px 40px;
   background-color: #fafafa;
   overflow: scroll;

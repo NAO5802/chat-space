@@ -1,0 +1,13 @@
+.flash {
+  height: 30px;
+  width: 100%;
+  color: $white;
+  text-align: center;
+  line-height: 30px;
+  &__notice{
+    background-color: $skyblue;
+  }
+  &__alert{
+    background-color: $orange;
+  }
+}
