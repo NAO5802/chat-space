@@ -3,7 +3,7 @@
     = current_user.name
   .userInfo__menu
     %ul
-      =link_to "#", class: "userInfo__menu" do 
+      =link_to new_group_path, class: "userInfo__menu" do 
         =fa_icon 'edit'
       =link_to edit_user_path(current_user), class: "userInfo__menu" do
         =fa_icon 'cog'
