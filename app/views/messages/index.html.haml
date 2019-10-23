@@ -1,34 +1,8 @@
-.header
-  .header__message
-    %p グループを作成しました
 .contents
   .leftContents
-    .userInfo
-      .userInfo__userName 
-        %p ユーザー名
-      .userInfo__menu
-        %ul
-          =link_to "#", class: "userInfo__menu" do 
-            =fa_icon 'edit'
-          =link_to "#", class: "userInfo__menu" do
-            =fa_icon 'cog'
+    =render partial: 'userInfo'
     =render partial: 'groupList'
   .rightContents 
-    .groupInfo
-      .groupInfo__about
-        %p.groupInfo__about--name グループ名
-        %p.groupInfo__about--member メンバー
-      .groupInfo__edit
-        =link_to "#", class: "groupInfo__edit groupInfo__edit--link" do
-          Edit
+    =render partial: 'groupInfo'
     =render partial: 'chatField'
-    .postForm
-      .postForm__textArea
-        %form
-          %input{type: "text", placeholder: "type a message", class: "postForm__textArea postForm__textArea--placeholder"}
-          %label{for: "uploadIcon", class: "postForm__textArea--image"} 
-            =fa_icon 'image'
-            %input{type: "file", id: "uploadIcon" , class: "postForm__textArea--defaultIcon"}
-      .postForm__send
-        =link_to "#", class: "postForm__send postForm__send--link" do
-          Send
+    =render partial: "postForm"
