@@ -20,8 +20,7 @@
     font-weight: bold;  
   }
   &__menu{
-    text-decoration: none;
-    color: $white;
+    @include linkformat;
   }
 }
 
@@ -30,10 +29,13 @@
   background-color: #2f3e51;
   padding: 20px 20px 0;
   overflow: scroll;
+  .editLink{
+    @include linkformat;
+  }
   &__groupName{
-    padding: 20px 0 5px;
+    padding-bottom: 5px;
     font-size: 15px;
-    font-weight: bold;  
+    font-weight: bold; 
   }
   &__message{
     padding-bottom: 40px;
