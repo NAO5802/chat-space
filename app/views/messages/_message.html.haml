@@ -1,0 +1,9 @@
+.chatField__info
+  .chatField__info--user 
+    = message.user.name
+  .chatField__info--date
+    = message.created_at.strftime("%Y/%m/%d %H:%M")
+.chatField__message
+  - if message.body.present?
+    =message.body
+  =image_tag message.image.url if message.image.present?
