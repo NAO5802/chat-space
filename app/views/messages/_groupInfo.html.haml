@@ -1,0 +1,9 @@
+.groupInfo
+  .groupInfo__about
+    .groupInfo__about--name 
+      =@group.name
+    .groupInfo__about--member 
+      = "Member : "+ @group.users.map{|h|h[:name]}.join(", ")
+  .groupInfo__edit
+    =link_to edit_group_path(@group), class: "groupInfo__edit groupInfo__edit--link" do
+      Edit

@@ -5,5 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :users_groups
   has_many :groups, through: :users_groups
-  
+  has_many :messages
 end
