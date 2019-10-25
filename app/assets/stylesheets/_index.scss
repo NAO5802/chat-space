@@ -78,10 +78,10 @@
 }
 
 .chatField{
-  height: calc(100vh - 190px);
-  padding: 46px 40px;
-  background-color: #fafafa;
   overflow: scroll;
+  height: calc(100vh -  90px - 100px);
+  padding: 46px 40px 0;
+  background-color: #fafafa;
   &__info{
     display: flex;
     padding-bottom: 10px;
@@ -103,37 +103,38 @@
   }
 }
 
-.postForm{
+.form {
+  background-color: #DDDDDD;
+  box-sizing: border-box;
   height: 90px;
-  padding: 20px 40px;
-  background-color: #dddddd;
-  display: flex;
-  &__textArea{
+  padding: 20px 50px 20px 40px;
+  &__message {
+    border: none;
+    float: left;
     height: 50px;
-    width: 100%;
-    position: relative;
-    &--placeholder{
-      font-size: 16px;
-      color: $darkgray;
-      padding-left: 10px;
+    width: calc(100% - 150px);
+  }
+  &__mask {
+    background-color: $white;
+    float: left;
+    height: 50px;
+    padding-right: 10px;
+    &__image {
+      font-size: 20px;
+      line-height: 50px;
     }
-    &--image{
-      position: absolute;
-      top: 25%;
-      right: 10px;
-    }
-    &--defaultIcon{
+    .hidden {
       display: none;
     }
   }
-  &__send{
+  &__submit {
+    background-color: $skyblue;
+    border: none;
+    color: $white;
+    float: right;
+    font-size: 16px;
     height: 50px;
     margin-left: 15px;
-    background-color: $skyblue;
-    &--link{
-      line-height: 50px;
-    }
-    @include btn($white);
+    padding: 0 30px;
   }
 }
-  
