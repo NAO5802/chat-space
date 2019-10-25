@@ -1,7 +1,8 @@
 .groupList
   -current_user.groups.each do |group|
-    = link_to "#", class: "editLink"  do
+    = link_to group_messages_path(group), class: "editLink"  do
       .groupList__groupName
         =group.name
       .groupList__message
-        %p まだメッセージがありません
+        =group.show_last_message
+
