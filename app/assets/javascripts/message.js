@@ -37,9 +37,7 @@ $(function(){
       var html = buildHTML(data);
       $('.chatField').append(html);
       $('.chatField').animate({scrollTop: $('.chatField')[0].scrollHeight}, 'fast');
-      $('.form__message').val('');
-      $('#message_image').val('');
-      $('.form__submit').prop("disabled", false);
+      $('form')[0].reset();
     })
     .fail(function(){
       alert('メッセージが送信できませんでした');
