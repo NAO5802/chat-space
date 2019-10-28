@@ -1,6 +1,8 @@
 $(function(){
+
   function buildHTML(data){
-    if ( data.image ) {
+      var image_view = `<img src="${data.image}">`
+
       var html = `<div class="message">
                     <div class="chatField__info">
                       <div class="chatField__info--user">
@@ -12,27 +14,11 @@ $(function(){
                     </div>
                     <div class="chatField__message">
                       ${data.body}
-                      <img src="${data.image}">
+                      ${ (data.image != null) ? image_view : '' }
                     </div>
                   </div>`
       return html;
-    }else{
-      var html = `<div class="message">
-                  <div class="chatField__info">
-                    <div class="chatField__info--user">
-                      ${data.user_name}
-                    </div>
-                    <div class="chatField__info--date">
-                      ${data.date}
-                    </div>
-                  </div>
-                  <div class="chatField__message">
-                    ${data.body}
-                  </div>
-                </div>`
-      return html;
     };
-  }
 
   $('#new_message').on('submit', function(e){
     e.preventDefault();
