@@ -1,29 +1,29 @@
 $(function(){
 
   function buildHTML(data){
-      var image_view = `<img src="${data.image}">`
+    var image_view = `<img src="${data.image}">`
 
-      var html = `<div class="message">
-                    <div class="chatField__info">
-                      <div class="chatField__info--user">
-                        ${data.user_name}
-                      </div>
-                      <div class="chatField__info--date">
-                        ${data.date}
-                      </div>
+    var html = `<div class="message" data-id="${data.id}">
+                  <div class="chatField__info">
+                    <div class="chatField__info--user">
+                      ${data.user_name}
                     </div>
-                    <div class="chatField__message">
-                      ${data.body}
-                      ${ (data.image != null) ? image_view : '' }
+                    <div class="chatField__info--date">
+                      ${data.date}
                     </div>
-                  </div>`
-      return html;
-    };
+                  </div>
+                  <div class="chatField__message">
+                    ${data.body}
+                    ${ (data.image != null) ? image_view : '' }
+                  </div>
+                </div>`
+    return html;
+  };
 
   $('#new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
-    var url = $(this).attr('action')
+    var url = $(this).attr('action');
 
     $.ajax({
       type: 'POST',
@@ -44,4 +44,34 @@ $(function(){
     });
     return false;
   });
+
+  var reloadMessages = function(){
+    var last_message_id = $('.chatField__info:last').attr('data-id');
+    $.ajax({
+      url: 'api/messages',
+      type: 'GET',
+      dataType: 'json', 
+      data: { id: last_message_id }
+    })
+    .done(function(datas){
+      var insertHTML = '';
+      datas.forEach(function(data){
+        insertHTML += buildHTML(data);
+        return insertHTML
+      });
+      
+      $('.chatField').append(insertHTML);
+      $('.chatField').animate({scrollTop: $('.chatField')[0].scrollHeight}, 'fast');
+      })
+    .fail(function(){
+      alert('ページの再読み込みができませんでした');
+    });
+  }
+
+  var href = location.href;
+  if ( href.match('/messages')){
+    setInterval(reloadMessages, 5000);
+  }    
+
+
 });
