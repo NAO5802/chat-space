@@ -47,6 +47,10 @@ $(function(){
 
   var reloadMessages = function(){
     var last_message_id = $('.chatField__info:last').attr('data-id');
+    var chatFieldUrl = window.location.href.match(/\/groups\/\d+\/messages/)
+
+    if (chatFieldUrl){
+
     $.ajax({
       url: 'api/messages',
       type: 'GET',
@@ -54,24 +58,25 @@ $(function(){
       data: { id: last_message_id }
     })
     .done(function(datas){
-      var insertHTML = '';
-      datas.forEach(function(data){
-        insertHTML += buildHTML(data);
-        return insertHTML
-      });
-      
-      $('.chatField').append(insertHTML);
-      $('.chatField').animate({scrollTop: $('.chatField')[0].scrollHeight}, 'fast');
+        var insertHTML = '';
+        var getDataId = 0;
+        datas.forEach(function(data){
+          getDataId = data.id
+          insertHTML += buildHTML(data);
+          return insertHTML
+        });
+        
+        $('.chatField').append(insertHTML);
+
+        if (last_message_id < getDataId) {
+          $('.chatField').animate({scrollTop: $('.chatField')[0].scrollHeight}, 'fast');
+        }
+        
       })
-    .fail(function(){
-      alert('ページの再読み込みができませんでした');
-    });
+      .fail(function(){
+        alert('ページの再読み込みができませんでした');
+      });
+    } 
   }
-
-  var href = location.href;
-  if ( href.match('/messages')){
-    setInterval(reloadMessages, 5000);
-  }    
-
-
+  setInterval(reloadMessages, 5000);
 });
