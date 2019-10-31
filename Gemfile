@@ -56,9 +56,10 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  gem 'listen'
 end
-gem 'carrierwave'
-gem 'fog-aws'
+
 
 group :production do
   gem 'unicorn', '5.4.1'
