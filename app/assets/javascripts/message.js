@@ -59,16 +59,14 @@ $(function(){
     })
     .done(function(datas){
         var insertHTML = '';
-        var getDataId = 0;
         datas.forEach(function(data){
-          getDataId = data.id
           insertHTML += buildHTML(data);
           return insertHTML
         });
         
-        $('.chatField').append(insertHTML);
 
-        if (last_message_id < getDataId) {
+        if (last_message_id < datas.id) {
+          $('.chatField').append(insertHTML);
           $('.chatField').animate({scrollTop: $('.chatField')[0].scrollHeight}, 'fast');
         }
         
