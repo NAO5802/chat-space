@@ -18,3 +18,5 @@
 
 #画像が保管されるディレクトリ　コミットされないようにする
 public/uploads/*
+
+config/secrets.yml
