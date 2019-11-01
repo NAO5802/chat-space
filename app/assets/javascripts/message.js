@@ -46,31 +46,31 @@ $(function(){
   });
 
   var reloadMessages = function(){
-    var last_message_id = $('.chatField__info:last').attr('data-id');
     var chatFieldUrl = window.location.href.match(/\/groups\/\d+\/messages/)
+    var last_message_id = $('.message').last().data('id');
 
     if (chatFieldUrl){
 
-    $.ajax({
-      url: 'api/messages',
-      type: 'GET',
-      dataType: 'json', 
-      data: { id: last_message_id }
-    })
-    .done(function(datas){
+      $.ajax({
+        url: 'api/messages',
+        type: 'GET',
+        dataType: 'json', 
+        data: { id: last_message_id }
+      })
+      .done(function(datas){
         var insertHTML = '';
-        datas.forEach(function(data){
-          insertHTML += buildHTML(data);
-          return insertHTML
-        });
-        
+        var getDataId = 0;
 
-        if (last_message_id < datas.id) {
+        datas.forEach(function(data){
+          getDataId = data.id
+          insertHTML += buildHTML(data);
+        });
+
+        if (last_message_id < getDataId ) {          
           $('.chatField').append(insertHTML);
           $('.chatField').animate({scrollTop: $('.chatField')[0].scrollHeight}, 'fast');
         }
-        
-      })
+        })
       .fail(function(){
         alert('ページの再読み込みができませんでした');
       });
